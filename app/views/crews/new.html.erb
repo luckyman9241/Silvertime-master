@@ -1,0 +1,15 @@
+<% provide(:title, 'New Crew') %>
+
+<h1>Create new crew</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@crew) do |c| %>
+    <%= render 'shared/error_messages', object: c.object %>
+
+      <%= c.label :name %>
+      <%= c.text_field :name %>
+
+      <%= c.submit "Create Crew", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="row timecard-listing">
+  <div class="date col-md-2">
+    <%= timecard.date.strftime("%D") %>
+  </div>
+  <div class="date col-md-1"><%= timecard.date.strftime("%A") %></div>
+  <div class="job col-md-1"><%= timecard.job.number rescue "" %></div>
+  <div class="user col-md-2"><%= timecard.user.name %></div>
+  <div class="hours col-md-2"><%= timecard.hours %> hours </div>
+  <% if current_user?(timecard.user) %>
+    <%= link_to "delete", timecard, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: timecard.date %>
+  <% end %>
+
+  <% if @user.admin? %>
+    <% if timecard.approved? %>
+      <%= link_to "approved!", approve_timecard_path(timecard), type: "button", class: "btn btn-success" %>
+    <% else %>
+
+      <%= link_to "approve", approve_timecard_path(timecard), type: "button", class: "btn btn-success" %>
+    <% end %>
+  <% end %>
+
+</div>

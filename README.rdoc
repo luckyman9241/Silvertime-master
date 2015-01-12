@@ -1,0 +1,7 @@
+== README
+
+This is a timecard app used by Silvertrek Systems's clients to collect time.
+
+It uses Ruby 2.0.0 and Rails 4.0
+
+Please install the Vagrant box first.

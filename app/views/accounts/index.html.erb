@@ -1,0 +1,21 @@
+<% provide(:title, 'Accounts') %>
+
+<h1>Active Accounts</h1>
+
+<div class="row">
+	<div class="col-md-2 col-md-offset-5">
+		<%= button_to "Add new account", new_account_path, class: "btn btn-default", method: :get %>
+	</div>
+</div>
+
+<% @active_accounts.each do |account| %>
+	<div class="row">
+		<div class="col-md-8">
+			<%= account.name %>
+		</div>
+		<div class="col-md-1">
+			<%= link_to "edit", edit_account_path(account) %>
+		</div>
+	</div>
+
+<% end %>

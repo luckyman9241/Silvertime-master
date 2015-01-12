@@ -1,0 +1,35 @@
+<h1><%= @job.description %></h1>
+
+<h2>Job Phases</h2>
+
+<% @phases.each do |phase| %>
+
+  <div class="row">
+    <div class="col-md-2">
+      <%= phase.number %>
+    </div>
+    <div class="col-md-8">
+      <%= phase.description %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "edit", edit_phase_path(phase) %>
+    </div>
+  </div>
+
+<% end %>
+
+<h2>New phase:</h2>
+
+<%= form_for(@phase) do |p| %>
+    <%= p.label :number %>
+    <%= p.text_field :number %>
+
+    <%= p.label :description %>
+    <%= p.text_field :description %>
+
+    <%= hidden_field 'phase', 'job_id', :value => @job.id %>
+
+    <%= p.submit "Add new phase", class: "btn btn-primary" %>
+
+
+<% end %>

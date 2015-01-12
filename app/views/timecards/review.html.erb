@@ -1,0 +1,21 @@
+<% provide(:title, 'Review Time') %>
+
+<% if current_user.super_user? %>
+
+	<p>you're gonna wait</p>
+
+<% elsif current_user.admin? %>
+
+	<h1 class="center"><%= @user.timecards.this_week.map(&:hours).sum %></h1>
+	<p class="center">hours so far this week</p>
+
+	<%= render partial: 'timecards/timecard', collection: @user.timecards.this_week %>
+
+<% elsif %>
+
+	<h1 class="center"><%= @user.timecards.this_week.map(&:hours).sum %></h1>
+	<p class="center">hours so far this week</p>
+
+	<%= render partial: 'timecards/timecard', collection: @user.timecards.this_week %>
+
+<% end %>

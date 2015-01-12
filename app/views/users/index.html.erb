@@ -1,0 +1,29 @@
+<% provide(:title, "All users") %>
+<h1>All users</h1>
+
+<div class="row">
+	<div class="col-md-2 col-md-offset-5">
+		<%= button_to "Add new user", new_user_path, class: "btn btn-default",
+			method: :get %>
+	</div>
+</div>
+
+
+<%= will_paginate %>
+
+<ul class="users">
+	<% @users.each do |user| %>
+
+		<li>
+			<%=user.name%>
+			<% if current_user.admin? && !current_user?(user) %>
+				| <%= link_to "delete", user, method: :delete, data: { confirm:
+					"You sure?" } %>
+  			<% end %>
+		</li>
+
+
+	<% end %>
+</ul>
+
+<%= will_paginate %>

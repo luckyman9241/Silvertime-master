@@ -1,0 +1,26 @@
+<% provide(:title, 'New Job') %>
+
+<h1>Create new job</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@job) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :number %>
+      <%= f.text_field :number %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description%>
+
+      <%= f.label :state %>
+      <%= f.text_field :state %>
+
+      <%= f.label :payroll_state %>
+      <%= f.text_field :payroll_state %>
+
+      <%= hidden_field 'job', 'account_id', :value => @job.account.id %>
+
+      <%= f.submit "Create new job", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

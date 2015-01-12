@@ -1,0 +1,27 @@
+<% provide(:title, 'Jobs') %>
+
+<h1>Active Jobs</h1>
+
+<h1><%= current_account.name %> </h1>
+
+<div class="row">
+	<div class="col-md-2 col-md-offset-5">
+		<%= button_to "Add new job", new_job_path, class: "btn btn-default",
+			method: :get %>
+	</div>
+</div>
+
+
+
+<ul class="users">
+	<% @active_jobs.each do |job| %>
+		<li>
+			<%= job.number %>
+			<%= job.description %>
+			<% if current_user.admin? %>
+				<%= link_to "edit", edit_job_path(job) %>
+			<% end %>
+		</li>
+
+	<% end %>
+</ul>

@@ -1,0 +1,14 @@
+<% if @timecards.any? %>
+
+	<% @user.jobs.each do |job| %>
+  		<h2><%= job.description %></h2>
+
+    	<%= render partial: 'timecards/timecard', collection: @timecards.where(job_id: job.id) %>
+ 	<% end %>
+<%= will_paginate @timecards %>
+
+<% else %>
+
+<p>nothin' here</p>
+
+<% end %>
